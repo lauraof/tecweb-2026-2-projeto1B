@@ -2,10 +2,6 @@
 {% load static %}
 
 {% block content %}
-<div class="appbar">
-  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo">
-  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
-</div>
 
 <main class="container">
   <form method="post" class="form-card">
@@ -21,9 +17,9 @@
         <div class="cabecalho">
             <h3 class="card-title">{{note.title}}</h3>
             <div class="botoes">
-                <a class="update-button" href="/edit/{id}", title="Editar anotação"><i class="bi bi-pencil"></i></a>
-                <a class="delete-button" href="/delete/{id}", title="Apagar anotação"><i class="bi bi-trash"></i></a>
-                <a class="btn-favorito" href="/favoritar/{id}" title="Favoritar anotação"></a>
+                <a class="update-button" href="/edit/{{note.id}}", title="Editar anotação">&#9998;</a>
+                <a class="delete-button" href="/delete/{{note.id}}", title="Apagar anotação">&#128465;</a>
+                <a class="btn-favorito" href="/favoritar/{{note.id}}" title="Favoritar anotação"></a>
             </div>
         </div>
         <div class="card-content">
