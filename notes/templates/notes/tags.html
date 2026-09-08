@@ -1,0 +1,20 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="div-tabela">
+    <table class="tabela">
+        <tr>
+            <th class="titulo-tabela1">Tags</th>
+            <th class="titulo-tabela2">Notas</th>
+        </tr>
+    {% for tag in tags %}
+        <tr>
+            <td class="tag-tabela">{{tag.nome}}</td>
+            <td><a href="/tags/{{tag.id}}" class="link-tabela"><i class="fa fa-link"></i></a></td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

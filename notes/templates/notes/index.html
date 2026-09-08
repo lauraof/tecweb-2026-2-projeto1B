@@ -4,27 +4,35 @@
 {% block content %}
 
 <main class="container">
-  <form method="post" class="form-card">
-      {% csrf_token %}
-    <input class="form-card-title" type="text" name="titulo"placeholder="Título"/>
-    <textarea class="autoresize" name="detalhes" placeholder="Digite o conteúdo..."></textarea>
-    <button type="submit" class="btn">Criar</button>
-  </form>
+  <div class="parte-cima">
+    <form method="post" class="form-card">
+        {% csrf_token %}
+      <input class="form-card-title" type="text" name="titulo"placeholder="Título"/>
+      <textarea class="autoresize" name="detalhes" placeholder="Digite o conteúdo..."></textarea>
+      <textarea class="autoresize" name="tag" placeholder="Adicione uma tag"></textarea>
+      <button type="submit" class="btn">Criar</button>
+    </form>
+    <div class="div-botao-tags">
+      <a class="botao-tags", href="/tags">Tags</a>
+    </div>
+  </div>
 
   <div class="card-container">
       {% for note in notes %}
-      <div class="card {favorito}">
+      <div class="card">
         <div class="cabecalho">
             <h3 class="card-title">{{note.title}}</h3>
             <div class="botoes">
-                <a class="update-button" href="/edit/{{note.id}}", title="Editar anotação">&#9998;</a>
-                <a class="delete-button" href="/delete/{{note.id}}", title="Apagar anotação">&#128465;</a>
-                <a class="btn-favorito" href="/favoritar/{{note.id}}" title="Favoritar anotação"></a>
+                <a class="update-button" href="/edit/{{note.id}}", title="Editar anotação"><i class="fa fa-pencil"></i></a>
+                <a class="delete-button" href="/delete/{{note.id}}", title="Apagar anotação"><i class="fa fa-trash"></i></a>
             </div>
         </div>
         <div class="card-content">
             <p>{{note.content}}</p>
         </div>
+        {% if note.tag %}
+        <h3 class="tag">{{note.tag}}</h3>
+        {% endif %}
       </div>
       {% endfor %}
   </div>
